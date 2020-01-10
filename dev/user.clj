@@ -1,6 +1,7 @@
 (ns user
   (:require [clojure.string :as string]
-            [clojure.java.io :refer [as-file file make-parents reader]]))
+            [clojure.java.io :refer [as-file file make-parents reader]]
+            [clojure.java.io :as io]))
 
 (def ant
   [{:class "Affix"
@@ -243,12 +244,18 @@
        " (reagent.core/adapt-react-class " class-name "))"
        (when input? ")")))
 
-(defn factory-ns-shadow [class path default-name rest-of-file reagent? input?]
-  (str "(ns syn-antd." (module-name->kebab-case class) "\n"
+(defn default-js-wrapper [path default-name]
+  (str "[\"" path "\" :default " default-name "]"))
+
+(defn refer-js-wrapper [path name]
+  (str "[\"" path "\" :refer [" name "]]"))
+
+(defn factory-ns-shadow [class path default-name rest-of-file reagent? input? prefix js-wrapper]
+  (str "(ns syn-antd." (when prefix (str prefix ".")) (module-name->kebab-case class) "\n"
        "  (:require\n"
        (when reagent? "    [reagent.core]\n")
        (when input? "    [syn-antd.reagent-utils]\n")
-       "    [\"" path "\" :default " default-name "]))\n\n"
+       "    " (js-wrapper path default-name) "))\n\n"
        rest-of-file))
 
 (defn innerify [base [s & rest-s]]
@@ -260,31 +267,64 @@
                 rest-s))
     base))
 
+(defn file-listing [directory]
+  (sequence
+    (comp (remove #(.isDirectory %))
+          (map (fn [f]
+                 (.getName f))))
+    (file-seq (io/file directory))))
+
+(def ^:const base-icon-path "@ant-design/icons")
+
+(defn gen-namespace! [{:keys [base ant-base class path inner fns suffix input? ns-prefix
+                              name-fn js-wrapper]
+                       :or   {base       "src/syn_antd/"
+                              name-fn    default-name
+                              ant-base   "antd/es/"
+                              input?     false
+                              js-wrapper default-js-wrapper}}]
+  (let [filename  (str base (module-name->snake-case (or class path)) ".cljs")
+        default   (name-fn (or class path))
+        file-body (string/join
+                    "\n\n"
+                    (concat
+                      (when (some? class)
+
+                        [(define-reagent-component class default input?)])
+                      (when (some? inner)
+                        (map (fn [entry]
+                               (let [id (if (map? entry)
+                                          (:id entry)
+                                          entry)]
+                                 (define-reagent-component (str class "." id)
+                                                           (if (sequential? entry)
+                                                             (innerify default entry)
+                                                             (innerify default [entry]))
+                                                           input?))) inner))
+                      (when (some? fns)
+                        (map define-fn fns))
+                      (when (some? suffix)
+                        [suffix])))]
+    (make-parents filename)
+    (spit (as-file filename)
+          (factory-ns-shadow (or class path) (str ant-base path) default file-body (some? class) input? ns-prefix js-wrapper))))
+
+(defn gen-icons! []
+  (doseq [icon (->> base-icon-path
+                    (str "node_modules/")
+                    (file-listing)
+                    (filter #(string/ends-with? % ".js")))
+          :let [class (subs icon 0 (- (count icon) 3))]]
+    (gen-namespace! {:class      class
+                     :path       ""
+                     :ant-base   base-icon-path
+                     :base       "src/syn_antd/icons/"
+                     :ns-prefix  "icons"
+                     :name-fn    identity
+                     :js-wrapper refer-js-wrapper})))
+
 ;; Inspiration taken from https://github.com/fulcrologic/semantic-ui-wrapper
 (defn gen-factories! []
-  (doseq [{:keys [class path inner fns suffix input?]
-           :or   {input? false}} ant]
-    (let [filename  (str "src/syn_antd/" (module-name->snake-case (or class path)) ".cljs")
-          default   (default-name (or class path))
-          file-body (string/join
-                      "\n\n"
-                      (concat
-                        (when (some? class)
-                          [(define-reagent-component class default input?)])
-                        (when (some? inner)
-                          (map (fn [entry]
-                                 (let [id (if (map? entry)
-                                            (:id entry)
-                                            entry)]
-                                   (define-reagent-component (str class "." id)
-                                                             (if (sequential? entry)
-                                                               (innerify default entry)
-                                                               (innerify default [entry]))
-                                                             input?))) inner))
-                        (when (some? fns)
-                          (map define-fn fns))
-                        (when (some? suffix)
-                          [suffix])))]
-      (make-parents filename)
-      (spit (as-file filename)
-            (factory-ns-shadow (or class path) (str "antd/es/" path) default file-body (some? class) input?)))))
+  (doseq [entry ant]
+    (gen-namespace! entry))
+  (gen-icons!))

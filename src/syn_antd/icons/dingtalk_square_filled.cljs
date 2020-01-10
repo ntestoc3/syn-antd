@@ -1,0 +1,6 @@
+(ns syn-antd.icons.dingtalk-square-filled
+  (:require
+    [reagent.core]
+    ["@ant-design/icons" :refer [DingtalkSquareFilled]]))
+
+(def dingtalk-square-filled (reagent.core/adapt-react-class DingtalkSquareFilled))

@@ -1,3 +1,7 @@
+# 4.0.0-rc.0
+- Add support for antd 4.0.0-rc.0
+- BREAKING: syn-antd.icons/icon is replaced with individual elements. See antd for full migration guide
+
 # 1.3.0
 - Removed `syn-antd.input/r-input`. Add custom wrapper to handle sync/async problems
 - Add demo test pages

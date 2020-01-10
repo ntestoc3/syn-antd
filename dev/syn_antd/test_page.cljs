@@ -5,6 +5,7 @@
 
     [syn-antd.layout :as layout]
     [syn-antd.menu :as menu]
+    [syn-antd.icons.account-book-filled :as abf]
 
     ;; Demo pages
     [syn-antd.auto-complete-page :as auto-complete-page]
