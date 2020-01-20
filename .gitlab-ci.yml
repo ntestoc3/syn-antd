@@ -22,3 +22,7 @@ cache:
   paths:
     - node_modules/
     - .shadow-cljs/
+    - .m2/
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2"
