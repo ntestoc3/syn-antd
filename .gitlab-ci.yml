@@ -1,4 +1,4 @@
-image: timbru31/docker-java-node:11-alpine
+image: timbru31/java-node:11-alpine
 
 before_script:
   - npm install
