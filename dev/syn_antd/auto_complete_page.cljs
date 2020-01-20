@@ -50,9 +50,6 @@
       "Set to 'Test'"]
      [button/button
       {:on-click #(re-frame/dispatch [::set-value ::input2 ""])}
-      "Set to empty string, ''"]
-     [button/button
-      {:on-click #(re-frame/dispatch-sync [::set-value ::input2 nil])}
       "Set to empty string, ''"]]
     [controlled-rf-auto-complete2-element]]])
 
