@@ -16,6 +16,8 @@ Using cljsjs antd leads to bloated compiled JS file since antd is a very large l
 
 If antd components are properly referenced, shadow-cljs helps handle the tree-shaking, reducing your package size to only the components you use.
 
+syn-antd writes all the boilerplate for you and leaves you with tree shaking-friendly, shadow-cljs ready namespaces to require in and use in your application.
+
 ## Using
 
 1. Add to your dependencies the latest version (see badge at top)
