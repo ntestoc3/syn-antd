@@ -1,18 +1,20 @@
 # syn-antd
 
+### NEWS: support for antd v4 RC1 is here!
+
 [![Clojars Project](https://img.shields.io/clojars/v/syn-antd.svg)](https://clojars.org/syn-antd)
 
 A [shadow-cljs](http://shadow-cljs.org/) friendly [reagent](https://github.com/reagent-project/reagent) wrapper around [Ant Design](https://ant.design/docs/react/introduce) components.
 
 [Demo pages](https://synqrinus.gitlab.io/syn-antd)
 
+For migration to antd v4 please read the [Changelog](https://gitlab.com/synqrinus/syn-antd/blob/master/CHANGELOG.md) and [antd migration guide](https://next.ant.design/docs/react/migration-v4)
+
 ## Purpose
 
 Using cljsjs antd leads to bloated compiled JS file since antd is a very large library with many UI components, of which you likely only need a subset.
 
 If antd components are properly referenced, shadow-cljs helps handle the tree-shaking, reducing your package size to only the components you use.
-
-CAVEAT: antd-icons is still a gigantic mess that's completely required in. This is a known issue the [Ant Design team is working on](https://github.com/ant-design/ant-design/issues/12011).
 
 ## Using
 
@@ -74,77 +76,8 @@ PRs are welcome for any **additional wrappers to antd** that are missing, as wel
 
 We also welcome **bug fixes** for any custom elements to syn-antd such as `ant-options`, as well as suggestions or PRs for new custom elements. That said, the goal is to minimize the amount of custom utilities present in this library. Any major quality of life improvements will be accepted, but others are encouraged to go in a separate library
 
-## Example shadow-cljs setup
-
-shadow-cljs can be a bit daunting. Here's an example of a basic project configuration for shadow-cljs.edn and package.json with syn-antd setup.
-
-The documentation has gotten a lot better in recent months, and you should [refer to it for further development](https://shadow-cljs.github.io/docs/UsersGuide.html).
-
-### shadow-cljs.edn
-
-```clojure
-;; shadow-cljs configuration
-{:source-paths
-               ["src/cljs"]
-
- :dependencies
-               [
-                [reagent "0.8.1"]
-                [syn-antd "1.0.4"]
-                ]
-
- :builds
-               {:app
-                {:target :browser
-                 :output-dir "resources/public/js/compiled"
-                 :asset-path "/js/compiled"
-
-                 :modules
-                 {:main
-                  {:entries [example-antd-project.core]}}
-
-                 :devtools
-                 ;; before live-reloading any code call this function
-                 {:http-root    "resources/public"
-                  :http-port    8700}
-                 }}}
-```
-
-### package.json
-
-```json
-{
-  "name": "example-antd-project",
-  "version": "0.0.1",
-  "private": true,
-  "devDependencies": {
-    "shadow-cljs": "2.8.14"
-  },
-  "dependencies": {
-    "antd": "^3.15.1",
-    "create-react-class": "15.6.3",
-    "prop-types": "15.7.2",
-    "react": "16.8.3",
-    "react-dom": "16.8.3"
-  }
-}
-```
-
-To install shadow-cljs on your dev machine:
-`npm install -g shadow-cljs`
-
-Before building/etc: `yarn install` (or whatever flavour of js build tooling is in this month)
-
-To build: `shadow-cljs compile app`
-
-To watch and hot-reload: `shadow-cljs watch app`
-
-To release: `shadow-cljs release app`
-
-To generate a build report: `shadow-cljs run shadow.cljs.build-report app report.html`
-
 ## License
 
-Copyright © 2019 Synqrinus
+Copyright © 2019-2020 Synqrinus
 
 Distributed under the [MIT License](https://opensource.org/licenses/MIT).
