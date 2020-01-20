@@ -1,5 +1,9 @@
 pages:
   stage: deploy
+  before_script:
+    - npm install
+    - npm install shadow-cljs
+    - shadow-cljs release test-page
   script:
     - mkdir public
     - cp -r resources/public/* public
