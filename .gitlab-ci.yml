@@ -2,7 +2,7 @@ image: node:latest
 
 before_script:
   - npm install
-  - npm install shadow-cljs
+  - npm install -g shadow-cljs
   - shadow-cljs release test-page
 
 pages:
