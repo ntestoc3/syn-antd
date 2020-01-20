@@ -7,7 +7,7 @@
     [syn-antd.card :as card]
     [syn-antd.col :as col]
     [syn-antd.divider :as divider]
-    [syn-antd.icon :as icon]
+    [syn-antd.icons.code-outlined :as code-outlined]
     [syn-antd.row :as row]
     [syn-antd.tooltip :as tooltip]
     [reagent.core :as reagent]))
@@ -32,9 +32,8 @@
                     {:title (if @show-code?
                               "Hide source"
                               "Show source")}
-                    [icon/icon {:type     "code"
-                                :on-click #(swap! show-code? not)}]])]
-       :style {:margin "8px 0px"}}
+                    [code-outlined/code-outlined {:on-click #(swap! show-code? not)}]])]
+       :style   {:margin "8px 0px"}}
       body
       (when @show-code?
         [code-block source-code])]]))

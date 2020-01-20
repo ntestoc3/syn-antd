@@ -5,7 +5,6 @@
 
     [syn-antd.layout :as layout]
     [syn-antd.menu :as menu]
-    [syn-antd.icons.account-book-filled :as abf]
 
     ;; Demo pages
     [syn-antd.auto-complete-page :as auto-complete-page]
@@ -33,9 +32,6 @@
                              :render-fn      #'input-number-page/test-input-page
                              :change-handler ::input-number-page/init
                              :label          "InputNumber"}})
-
-(defn menu-item [{:keys [key label]}]
-  )
 
 (defn test-page []
   (let [active-page @(re-frame/subscribe [::active-page])]
