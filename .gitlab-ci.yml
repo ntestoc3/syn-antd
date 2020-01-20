@@ -1,9 +1,13 @@
+image: node:latest
+
+before_script:
+  - npm install
+  - npm install shadow-cljs
+  - shadow-cljs release test-page
+
 pages:
   stage: deploy
-  before_script:
-    - npm install
-    - npm install shadow-cljs
-    - shadow-cljs release test-page
+
   script:
     - mkdir public
     - cp -r resources/public/* public
@@ -12,3 +16,8 @@ pages:
       - public
   only:
     - master
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
