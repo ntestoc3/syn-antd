@@ -8,7 +8,8 @@
 
 (defn basic-auto-complete-element []
   [auto-complete/auto-complete
-   {:on-search #(prn %)}])
+   {:on-search #(prn %)
+    :style     {:width "100%"}}])
 
 (defn basic-auto-complete []
   [dev/demo-element
@@ -20,7 +21,8 @@
   [auto-complete/auto-complete
    {:value     @(re-frame/subscribe [::input1])
     :on-change #(re-frame/dispatch-sync [::set-value ::input1 %])
-    :on-search #(prn "Search" %)}])
+    :on-search #(prn "Search" %)
+    :style     {:width "100%"}}])
 
 (defn controlled-rf-auto-complete []
   [dev/demo-element
@@ -32,21 +34,23 @@
   [auto-complete/auto-complete
    {:value     @(re-frame/subscribe [::input2])
     :on-change #(re-frame/dispatch-sync [::set-value ::input2 %])
-    :on-search #(prn "Search" %)}])
+    :on-search #(prn "Search" %)
+    :style     {:width "100%"}}])
 
 (defn controlled-rf-auto-complete2 []
   [dev/demo-element
    "Controlled auto-complete with default values"
    (source controlled-rf-auto-complete2-element)
    [:<>
+    [:p "Note: as of antd v4 it's not easy to set an autocomplete value to nil"]
     [:div
      [button/button
       {:type     "primary"
        :on-click #(re-frame/dispatch [::set-value ::input2 "Test"])}
       "Set to 'Test'"]
      [button/button
-      {:on-click #(re-frame/dispatch [::set-value ::input2 nil])}
-      "Set to nil"]]
+      {:on-click #(re-frame/dispatch [::set-value ::input2 ""])}
+      "Set to empty string, ''"]]
     [controlled-rf-auto-complete2-element]]])
 
 
