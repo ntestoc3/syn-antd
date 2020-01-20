@@ -274,7 +274,7 @@
                  (.getName f))))
     (file-seq (io/file directory))))
 
-(def ^:const base-icon-path "@ant-design/icons")
+(def ^:const base-icon-path "@ant-design/icons/es/icons")
 
 (defn gen-namespace! [{:keys [base ant-base class path inner fns suffix input? ns-prefix
                               name-fn js-wrapper]
@@ -316,12 +316,12 @@
                     (filter #(string/ends-with? % ".js")))
           :let [class (subs icon 0 (- (count icon) 3))]]
     (gen-namespace! {:class      class
-                     :path       ""
-                     :ant-base   base-icon-path
+                     :path       class
+                     :ant-base   (str base-icon-path "/")
                      :base       "src/syn_antd/icons/"
                      :ns-prefix  "icons"
                      :name-fn    identity
-                     :js-wrapper refer-js-wrapper})))
+                     :js-wrapper default-js-wrapper})))
 
 ;; Inspiration taken from https://github.com/fulcrologic/semantic-ui-wrapper
 (defn gen-factories! []
