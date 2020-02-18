@@ -70,7 +70,7 @@ To build for a new version of Ant Design.
 3. Create your theme in `/less`. See current folder for working example of synqrinus-theme
 4. Execute `lessc --js less/antd.main.less > <YOUR THEME>-antd.css --clean-css`
 
-### Babel optimizations (antd v4+)
+## Babel optimizations (antd v4+)
 
 With antd v4 we can apply some straightforward tree shaking through Babel.
 
@@ -112,7 +112,7 @@ module.exports = {
 }
 ```
 
-### Example Project with Themeing and Babel
+## Example Project with Themeing and Babel
 
 For an skeleton example setup with ant design, take a look at the **example_setup** directory in this project.
 
