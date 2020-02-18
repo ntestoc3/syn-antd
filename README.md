@@ -70,6 +70,60 @@ To build for a new version of Ant Design.
 3. Create your theme in `/less`. See current folder for working example of synqrinus-theme
 4. Execute `lessc --js less/antd.main.less > <YOUR THEME>-antd.css --clean-css`
 
+### Babel optimizations (antd v4+)
+
+With antd v4 we can apply some straightforward tree shaking through Babel.
+
+To do so, update your `package.json` as follows:
+
+- Add `@babel/cli`
+- Add `@babel/core`
+- Add `babel-plugin-transform-imports`
+- Add a cleaning script for convenience
+
+Here's an example of the configuration:
+
+```json
+... more config
+  "devDependencies": {
+    "shadow-cljs": "^2.8.83",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "babel-plugin-transform-imports": "^2.0.0"
+  },
+  "scripts": {
+    "clean-antd": "./node_modules/.bin/babel ./node_modules/antd/es --out-dir ./node_modules/antd/es"
+  },
+... more config
+```
+
+Create a babel.config.js with the following contents:
+
+```js
+module.exports = {
+    plugins: [
+        [require('babel-plugin-transform-imports'), {
+            "@ant-design/icons": {
+                "transform": "@ant-design/icons/es/icons/${member}",
+                "preventFullImport": true
+            }
+        }]
+    ]
+}
+```
+
+### Example Project with Themeing and Babel
+
+For an skeleton example setup with ant design, take a look at the **example_setup** directory in this project.
+
+To run shadow-cljs in this setup, you execute the `./shadow` bash script. For example:
+
+```shell script
+./shadow watch app
+```
+
+Note: This is merely a skeleton, you should copy over the contents, as needed, to your project. You will separately need to set up shadow-cljs, etc.  
+
 ## Contributing
 
 syn-antd is pretty bare-bones and doesn't need to have many more bells-and-whistles in my opinion, but I'm still very happy to receive contributions. 
