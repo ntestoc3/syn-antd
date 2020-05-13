@@ -6,7 +6,7 @@ A [shadow-cljs](http://shadow-cljs.org/) friendly [reagent](https://github.com/r
 
 [Demo pages](https://synqrinus.gitlab.io/syn-antd)
 
-For migration to antd v4 please read the [Changelog](https://gitlab.com/synqrinus/syn-antd/blob/master/CHANGELOG.md) and [antd migration guide](https://next.ant.design/docs/react/migration-v4)
+For migration to antd v4 please read the [Changelog](https://gitlab.com/synqrinus/syn-antd/blob/master/CHANGELOG.md) and [antd migration guide](https://ant.design/docs/react/migration-v4)
 
 ## Purpose
 
