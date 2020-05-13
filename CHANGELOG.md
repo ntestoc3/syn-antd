@@ -33,6 +33,8 @@ The benefit of this is tree shaking, i.e. significantly reduced package sizes. F
 
 ### Autocomplete
 
+**Please use antd 4.0.0-rc.3 or higher to fix the issue described below**
+
 autocomplete no longer seems to support setting a controlled value to nil. However, you can set it to an empty string. For example
 
 ```
