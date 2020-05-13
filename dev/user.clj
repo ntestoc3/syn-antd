@@ -24,7 +24,8 @@
     :path  "badge"}
    {:class "Breadcrumb"
     :path  "breadcrumb"
-    :inner ["Item" "Separator"]}
+    :inner ["Item"
+            "Separator"]}
    {:class "Button"
     :path  "button"
     :inner ["Group"]}
@@ -53,6 +54,7 @@
    {:class "DatePicker"
     :path  "date-picker"
     :inner ["MonthPicker"
+            "QuarterPicker"
             "RangePicker"
             "WeekPicker"]}
    {:class "Descriptions"
@@ -69,7 +71,9 @@
     :path  "empty"}
    {:class "Form"
     :path  "form"
-    :inner ["Item"]}
+    :inner ["Item"
+            "List"
+            "Provider"]}
    {:class "Icon"
     :path  "icon"}
    {:class  "Input"
@@ -176,9 +180,14 @@
   (let [option-fn (partial ant-select-option id-fn label-fn)]
     (map option-fn options)))"}
    {:class "Skeleton"
-    :path  "skeleton"}
+    :path  "skeleton"
+    :inner ["Avatar"
+            "Button"
+            "Input"]}
    {:class "Slider"
     :path  "slider"}
+   {:class "Space"
+    :path  "space"}
    {:class "Spin"
     :path  "spin"}
    {:class "Statistic"

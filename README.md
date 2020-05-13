@@ -1,7 +1,5 @@
 # syn-antd
 
-### NEWS: support for antd v4 RC1 is here!
-
 [![Clojars Project](https://img.shields.io/clojars/v/syn-antd.svg)](https://clojars.org/syn-antd)
 
 A [shadow-cljs](http://shadow-cljs.org/) friendly [reagent](https://github.com/reagent-project/reagent) wrapper around [Ant Design](https://ant.design/docs/react/introduce) components.

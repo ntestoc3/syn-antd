@@ -1,3 +1,12 @@
+# 4.2.2
+- Add support for DatePicker quarter picker
+- Add support for Space component
+- Add support for Form.List
+- Add support for Form.Provider
+- Add support for Skeleton.Avatar
+- Add support for Skeleton.Button
+- Add support for Skeleton.Input
+
 # 4.0.0-rc.1
 - Add support for antd 4.0.0-rc.1
 - BREAKING: syn-antd.icon is replaced with individual elements. See antd for full migration guide
