@@ -225,7 +225,7 @@
     :inner ["TreeNode"]}
    {:class "Typography"
     :path  "typography"
-    :inner ["Text" "Title" "Paragraph"]}
+    :inner ["Text" "Title" "Paragraph" "Link"]}
    {:class "Upload"
     :path  "upload"}])
 

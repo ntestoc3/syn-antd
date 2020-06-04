@@ -1,3 +1,6 @@
+# 4.3.1
+- Add support for Typography.Link
+
 # 4.2.2
 - Add support for DatePicker quarter picker
 - Add support for Space component

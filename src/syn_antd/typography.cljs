@@ -10,3 +10,5 @@
 (def typography-title (reagent.core/adapt-react-class (.-Title ant-typography)))
 
 (def typography-paragraph (reagent.core/adapt-react-class (.-Paragraph ant-typography)))
+
+(def typography-link (reagent.core/adapt-react-class (.-Link ant-typography)))
