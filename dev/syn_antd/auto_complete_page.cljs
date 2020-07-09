@@ -42,7 +42,6 @@
    "Controlled auto-complete with default values"
    (source controlled-rf-auto-complete2-element)
    [:<>
-    [:p "Note: as of antd v4 it's not easy to set an autocomplete value to nil"]
     [:div
      [button/button
       {:type     "primary"
