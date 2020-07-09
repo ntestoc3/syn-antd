@@ -1,3 +1,8 @@
+# 4.4.1
+- Add support for Skeleon.Image
+- Fixed autocomplete namespace (dropping OptGroup, changing wrapper of input syncing)
+
+
 # 4.3.1
 - Add support for Typography.Link
 

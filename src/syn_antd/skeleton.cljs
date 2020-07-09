@@ -9,4 +9,6 @@
 
 (def skeleton-button (reagent.core/adapt-react-class (.-Button ant-skeleton)))
 
+(def skeleton-image (reagent.core/adapt-react-class (.-Image ant-skeleton)))
+
 (def skeleton-input (reagent.core/adapt-react-class (.-Input ant-skeleton)))

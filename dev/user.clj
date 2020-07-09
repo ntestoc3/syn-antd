@@ -13,9 +13,7 @@
     :inner ["Link"]}
    {:class  "AutoComplete"
     :path   "auto-complete"
-    :input? true
-    :inner  ["OptGroup"
-             "Option"]}
+    :inner  ["Option"]}
    {:class "Avatar"
     :path  "avatar"}
    {:class "BackTop"
@@ -183,6 +181,7 @@
     :path  "skeleton"
     :inner ["Avatar"
             "Button"
+            "Image"
             "Input"]}
    {:class "Slider"
     :path  "slider"}
