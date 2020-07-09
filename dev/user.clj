@@ -13,7 +13,9 @@
     :inner ["Link"]}
    {:class  "AutoComplete"
     :path   "auto-complete"
-    :inner  ["Option"]}
+    :input? true
+    :inner  [{:id     "Option"
+              :input? false}]}
    {:class "Avatar"
     :path  "avatar"}
    {:class "BackTop"
@@ -308,7 +310,7 @@
                                                            (if (sequential? entry)
                                                              (innerify default entry)
                                                              (innerify default [entry]))
-                                                           input?))) inner))
+                                                           (:input? entry)))) inner))
                       (when (some? fns)
                         (map define-fn fns))
                       (when (some? suffix)
