@@ -7,8 +7,10 @@
 
 (def date-picker-month-picker (reagent.core/adapt-react-class (.-MonthPicker ant-date-picker)))
 
-(def date-picker-quarter-picker (reagent.core/adapt-react-class (.-QuarterPicker ant-date-picker)))
-
 (def date-picker-range-picker (reagent.core/adapt-react-class (.-RangePicker ant-date-picker)))
 
+(def date-picker-time-picker (reagent.core/adapt-react-class (.-TimePicker ant-date-picker)))
+
 (def date-picker-week-picker (reagent.core/adapt-react-class (.-WeekPicker ant-date-picker)))
+
+(def date-picker-year-picker (reagent.core/adapt-react-class (.-YearPicker ant-date-picker)))

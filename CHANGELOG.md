@@ -1,3 +1,6 @@
+# 4.4.2
+- Fix datepicker namespace for parity with antd
+
 # 4.4.1
 - Add support for Skeleton.Image
 - Fixed autocomplete namespace (dropping OptGroup, changing wrapper of input syncing)

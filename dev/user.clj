@@ -54,9 +54,10 @@
    {:class "DatePicker"
     :path  "date-picker"
     :inner ["MonthPicker"
-            "QuarterPicker"
             "RangePicker"
-            "WeekPicker"]}
+            "TimePicker"
+            "WeekPicker"
+            "YearPicker"]}
    {:class "Descriptions"
     :path  "descriptions"
     :inner ["Item"]}
