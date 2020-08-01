@@ -1,3 +1,6 @@
+# 4.5.1
+- Add support for Badge.Ribbon component
+
 # 4.4.2
 - Fix datepicker namespace for parity with antd
 

@@ -21,7 +21,8 @@
    {:class "BackTop"
     :path  "back-top"}
    {:class "Badge"
-    :path  "badge"}
+    :path  "badge"
+    :inner ["Ribbon"]}
    {:class "Breadcrumb"
     :path  "breadcrumb"
     :inner ["Item"
