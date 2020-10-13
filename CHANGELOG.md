@@ -1,3 +1,12 @@
+# 4.7.0
+- Add support for Image component
+- Drop support for deprecated Button.Group component. antd changelog recommends using Space instead
+- Remove no longer used Mention component. See Mentions for an alternative
+- [syn-antd related]: Drop Icon component altogether, use specific paths for icons to allow for tree shaking
+
+Miscellaneous:
+- Fix docs deploy bug by bumping to latest version of react-syntax-highlight
+
 # 4.5.1
 - Add support for Badge.Ribbon component
 

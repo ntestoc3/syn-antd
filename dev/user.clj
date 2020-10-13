@@ -28,8 +28,7 @@
     :inner ["Item"
             "Separator"]}
    {:class "Button"
-    :path  "button"
-    :inner ["Group"]}
+    :path  "button"}
    {:class "Calendar"
     :path  "calendar"}
    {:class "Card"
@@ -76,8 +75,9 @@
     :inner ["Item"
             "List"
             "Provider"]}
-   {:class "Icon"
-    :path  "icon"}
+   ;; TODO: maybe add useBreakpoint hook from grid?
+   {:class "Image"
+    :path "image"}
    {:class  "Input"
     :path   "input"
     :input? true
@@ -103,9 +103,6 @@
             ["Item" "Meta"]]}
    {:class "LocaleProvider"                                 ;; DEPRECATED
     :path  "locale-provider"}
-   {:class "Mention"                                        ;; DEPRECATED
-    :path  "mention"
-    :inner ["Nav"]}
    {:class "Mentions"
     :path  "mentions"
     :inner ["Option"]}
