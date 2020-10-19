@@ -1,3 +1,6 @@
+# 4.7.2
+- Fix for list already being in core warning
+
 # 4.7.0
 - Add support for Image component
 - Drop support for deprecated Button.Group component. antd changelog recommends using Space instead

@@ -77,7 +77,7 @@
             "Provider"]}
    ;; TODO: maybe add useBreakpoint hook from grid?
    {:class "Image"
-    :path "image"}
+    :path  "image"}
    {:class  "Input"
     :path   "input"
     :input? true
@@ -97,10 +97,11 @@
             "Footer"
             "Header"
             "Sider"]}
-   {:class "List"
-    :path  "list"
-    :inner ["Item"
-            ["Item" "Meta"]]}
+   {:class         "List"
+    :path          "list"
+    :inner         ["Item"
+                    ["Item" "Meta"]]
+    :refer-clojure "(:refer-clojure :exclude [list])"}
    {:class "LocaleProvider"                                 ;; DEPRECATED
     :path  "locale-provider"}
    {:class "Mentions"
@@ -259,8 +260,10 @@
 (defn refer-js-wrapper [path name]
   (str "[\"" path "\" :refer [" name "]]"))
 
-(defn factory-ns-shadow [class path default-name rest-of-file reagent? input? prefix js-wrapper]
+(defn factory-ns-shadow [{:keys [class path default-name rest-of-file reagent? input? prefix js-wrapper refer-clojure]}]
   (str "(ns syn-antd." (when prefix (str prefix ".")) (module-name->kebab-case class) "\n"
+       (when refer-clojure
+         (str "  " refer-clojure "\n"))
        "  (:require\n"
        (when reagent? "    [reagent.core]\n")
        (when input? "    [syn-antd.reagent-utils]\n")
@@ -286,7 +289,7 @@
 (def ^:const base-icon-path "@ant-design/icons/es/icons")
 
 (defn gen-namespace! [{:keys [base ant-base class path inner fns suffix input? ns-prefix
-                              name-fn js-wrapper]
+                              name-fn js-wrapper refer-clojure]
                        :or   {base       "src/syn_antd/"
                               name-fn    default-name
                               ant-base   "antd/es/"
@@ -316,7 +319,15 @@
                         [suffix])))]
     (make-parents filename)
     (spit (as-file filename)
-          (factory-ns-shadow (or class path) (str ant-base path) default file-body (some? class) input? ns-prefix js-wrapper))))
+          (factory-ns-shadow {:class         (or class path)
+                              :path          (str ant-base path)
+                              :default-name  default
+                              :rest-of-file  file-body
+                              :reagent?      (some? class)
+                              :input?        input?
+                              :prefix        ns-prefix
+                              :js-wrapper    js-wrapper
+                              :refer-clojure refer-clojure}))))
 
 (defn gen-icons! []
   (doseq [icon (->> base-icon-path

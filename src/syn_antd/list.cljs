@@ -1,4 +1,5 @@
 (ns syn-antd.list
+  (:refer-clojure :exclude [list])
   (:require
     [reagent.core]
     ["antd/es/list" :default ant-list]))
