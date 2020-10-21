@@ -1,3 +1,6 @@
+# 4.7.3
+- Fix for empty already being in core warning. Thanks [@mjul](https://gitlab.com/mjul). See [PR2](https://gitlab.com/synqrinus/syn-antd/-/merge_requests/2)
+
 # 4.7.2
 - Fix for list already being in core warning
 
