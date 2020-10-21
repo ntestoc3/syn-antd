@@ -69,7 +69,8 @@
     :path  "dropdown"
     :inner ["Button"]}
    {:class "Empty"
-    :path  "empty"}
+    :path  "empty"
+    :refer-clojure "(:refer-clojure :exclude [empty])"}
    {:class "Form"
     :path  "form"
     :inner ["Item"
