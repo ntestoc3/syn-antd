@@ -1,4 +1,5 @@
 (ns syn-antd.empty
+  (:refer-clojure :exclude [empty])
   (:require
     [reagent.core]
     ["antd/es/empty" :default ant-empty]))
