@@ -18,6 +18,6 @@
                                   [org.clojure/tools.nrepl "0.2.13"]
 
                                   ;; For code completion in cursive, managed by shadow-cljs.edn
-                                  [reagent "0.9.0-rc1"]
-                                  [re-frame "0.11.0-rc1"]]
+                                  [reagent "1.0.0-alpha2"]
+                                  [re-frame "1.1.1"]]
                    :repl-options {:init-ns user}}})

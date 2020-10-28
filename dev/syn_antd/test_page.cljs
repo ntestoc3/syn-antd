@@ -1,7 +1,7 @@
 (ns syn-antd.test-page
   (:require
     [re-frame.core :as re-frame]
-    [reagent.core :as reagent]
+    [reagent.dom]
 
     [syn-antd.layout :as layout]
     [syn-antd.menu :as menu]
@@ -79,7 +79,7 @@
 
 (defn ^:dev/after-load mount-components []
   (re-frame/clear-subscription-cache!)
-  (reagent/render [#'test-page]
+  (reagent.dom/render [#'test-page]
                   (.getElementById js/document "app")))
 
 (defn init! []
