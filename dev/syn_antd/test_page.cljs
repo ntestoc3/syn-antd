@@ -9,7 +9,8 @@
     ;; Demo pages
     [syn-antd.auto-complete-page :as auto-complete-page]
     [syn-antd.input-page :as input-page]
-    [syn-antd.input-number-page :as input-number-page]))
+    [syn-antd.input-number-page :as input-number-page]
+    [syn-antd.form-page :as form-page]))
 
 (re-frame/reg-sub ::active-page (fn [db _] (::active-page db)))
 
@@ -31,7 +32,11 @@
             "input-number"  {:key            "input-number"
                              :render-fn      #'input-number-page/test-input-page
                              :change-handler ::input-number-page/init
-                             :label          "InputNumber"}})
+                             :label          "InputNumber"}
+            "form"          {:key            "form"
+                             :render-fn      #'form-page/test-form-page
+                             :change-handler ::form-page/init
+                             :label          "Form"}})
 
 (defn test-page []
   (let [active-page @(re-frame/subscribe [::active-page])]
@@ -80,7 +85,7 @@
 (defn ^:dev/after-load mount-components []
   (re-frame/clear-subscription-cache!)
   (reagent.dom/render [#'test-page]
-                  (.getElementById js/document "app")))
+                      (.getElementById js/document "app")))
 
 (defn init! []
   (mount-components))

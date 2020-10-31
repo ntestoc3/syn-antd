@@ -253,7 +253,10 @@
   (str "(def " (get-symbol-name component)
        (when input? " (syn-antd.reagent-utils/fixed-async-input")
        " (reagent.core/adapt-react-class " class-name "))"
-       (when input? ")")))
+       (when input? ")")
+       (when input?
+         (str "\n\n"
+              (define-reagent-component (str component "-raw") class-name false)))))
 
 (defn default-js-wrapper [path default-name]
   (str "[\"" path "\" :default " default-name "]"))

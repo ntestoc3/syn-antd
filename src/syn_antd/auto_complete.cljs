@@ -6,4 +6,6 @@
 
 (def auto-complete (syn-antd.reagent-utils/fixed-async-input (reagent.core/adapt-react-class ant-auto-complete)))
 
+(def auto-complete-raw (reagent.core/adapt-react-class ant-auto-complete))
+
 (def auto-complete-option (reagent.core/adapt-react-class (.-Option ant-auto-complete)))

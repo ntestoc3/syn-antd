@@ -1,4 +1,4 @@
-(defproject syn-antd "4.7.3"
+(defproject syn-antd "4.7.4"
   :description "Ant Design Reagent Wrapper - Optimised for shadow-cljs"
   :min-lein-version "2.7.0"
   :url "https://gitlab.com/synqrinus/syn-antd"
