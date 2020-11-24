@@ -1,3 +1,6 @@
+# 4.8.5
+- Add `Statistic.Countdown` support via `statistic-countdown`
+
 # 4.7.4
 - Add `-raw` components that are basic wrappers around antd input components without reagent async fixes. Largely for form support. Thanks [@maacl](https://gitlab.com/maacl). See [PR3](https://gitlab.com/synqrinus/syn-antd/-/merge_requests/3), see link for more details. 
 

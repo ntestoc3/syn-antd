@@ -68,8 +68,8 @@
    {:class "Dropdown"
     :path  "dropdown"
     :inner ["Button"]}
-   {:class "Empty"
-    :path  "empty"
+   {:class         "Empty"
+    :path          "empty"
     :refer-clojure "(:refer-clojure :exclude [empty])"}
    {:class "Form"
     :path  "form"
@@ -193,7 +193,8 @@
    {:class "Spin"
     :path  "spin"}
    {:class "Statistic"
-    :path  "statistic"}
+    :path  "statistic"
+    :inner ["Countdown"]}
    {:class "Steps"
     :path  "steps"
     :inner ["Step"]}
