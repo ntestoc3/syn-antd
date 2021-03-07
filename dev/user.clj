@@ -78,7 +78,8 @@
             "Provider"]}
    ;; TODO: maybe add useBreakpoint hook from grid?
    {:class "Image"
-    :path  "image"}
+    :path  "image"
+    :inner ["PreviewGroup"]}
    {:class  "Input"
     :path   "input"
     :input? true
@@ -166,19 +167,20 @@
     :path   "select"
     :inner  ["OptGroup"
              "Option"]
-    :suffix "(defn ant-select-option [id-fn label-fn option]
+    :suffix "(defn ant-select-option [id-fn label-fn class-fn option]
   ^{:key (str \"antd-option-\" (id-fn option))}
   [select-option
-   {:key      (id-fn option)
-    :value    (id-fn option)
-    :title    (label-fn option)
-    :disabled (:disabled? option)}
+   {:key       (id-fn option)
+    :value     (id-fn option)
+    :title     (label-fn option)
+    :className (when (some? class-fn) (class-fn option))
+    :disabled  (:disabled? option)}
    (label-fn option)])
 
-(defn ant-options [{:keys [options id-fn label-fn]
+(defn ant-options [{:keys [options id-fn label-fn class-fn]
                     :or   {id-fn    :id
                            label-fn :label}}]
-  (let [option-fn (partial ant-select-option id-fn label-fn)]
+  (let [option-fn (partial ant-select-option id-fn label-fn class-fn)]
     (map option-fn options)))"}
    {:class "Skeleton"
     :path  "skeleton"

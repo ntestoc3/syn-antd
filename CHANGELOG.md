@@ -1,3 +1,7 @@
+# 4.13.1
+- Add `Image.PreviewGroup` support via `image-preview-group`
+- Add optional `class-fn` key to `ant-options` helper function that helps generate class names for options. Thanks [@madhat2r](https://gitlab.com/madhat2r). See [PR5](https://gitlab.com/synqrinus/syn-antd/-/merge_requests/5) 
+
 # 4.8.5
 - Add `Statistic.Countdown` support via `statistic-countdown`
 
