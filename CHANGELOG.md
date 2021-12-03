@@ -1,3 +1,7 @@
+# 4.17.2
+- Bump dependencies
+- Add Upload Dragger component. Thanks [@mjul](https://gitlab.com/mjul). See [PR7](https://gitlab.com/synqrinus/syn-antd/-/merge_requests/7)
+
 # 4.13.1
 - Add `Image.PreviewGroup` support via `image-preview-group`
 - Add optional `class-fn` key to `ant-options` helper function that helps generate class names for options. Thanks [@madhat2r](https://gitlab.com/madhat2r). See [PR5](https://gitlab.com/synqrinus/syn-antd/-/merge_requests/5) 
