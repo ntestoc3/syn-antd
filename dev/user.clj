@@ -232,7 +232,8 @@
     :path  "typography"
     :inner ["Text" "Title" "Paragraph" "Link"]}
    {:class "Upload"
-    :path  "upload"}])
+    :path  "upload"
+    :inner ["Dragger"]}])
 
 (defn module-name->any-case
   [case]
