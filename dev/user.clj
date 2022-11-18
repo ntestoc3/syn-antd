@@ -71,6 +71,9 @@
    {:class         "Empty"
     :path          "empty"
     :refer-clojure "(:refer-clojure :exclude [empty])"}
+   {:class "FloatButton"
+    :path  "float-button"
+    :inner ["BackTop"]}
    {:class "Form"
     :path  "form"
     :inner ["Item"
@@ -219,6 +222,8 @@
     :inner ["Item"]}
    {:class "Tooltip"
     :path  "tooltip"}
+   {:class "Tour"
+    :path  "tour"}
    {:class "Transfer"
     :path  "transfer"}
    {:class "Tree"
