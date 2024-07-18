@@ -1,4 +1,4 @@
-(defproject ntestoc/syn-antd "5.15.1"
+(defproject com.github.ntestoc3/syn-antd "5.15.1"
   :description "Ant Design Reagent Wrapper - Optimised for shadow-cljs"
   :min-lein-version "2.7.0"
   :url "https://gitlab.com/synqrinus/syn-antd"
@@ -9,6 +9,11 @@
 
   :source-paths ["src"]
   :clean-targets ^{:protect false} ["target"]
+
+  :deploy-repositories [["clojars" {:url "https://clojars.org/repo"
+                                    :username :env/clojars_user
+                                    :password :env/clojars_pass
+                                    :sign-releases false}]]
 
   :profiles {:jar {}
              :dev {:source-paths ["dev"]
